@@ -11,16 +11,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<NZWalksDbContext>(options =>
+builder.Services.AddDbContext<NZWalkContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalks"));
 });
 
 builder.Services.AddScoped<IRegionReposiotry, RegionReposiotry>();
-
+builder.Services.AddScoped<IWalkReposiotry, WalkReposiotry>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
-
 
 
 var app = builder.Build();
